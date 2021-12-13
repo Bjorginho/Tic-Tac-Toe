@@ -1,8 +1,13 @@
-import Game.TicTacToe;
+import Game.Game;
+import Player.IPlayer;
+import Player.Player;
+import Player.Robot;
 
 public class Main {
     public static void main(String[] args) {
-        TicTacToe ttt = new TicTacToe();
-        ttt.start();
+        IPlayer player1 = new Player("Player ");
+        IPlayer player2 = new Robot("AI");
+        Game game = new Game(player1, player2);
+        game.start();
     }
 }
