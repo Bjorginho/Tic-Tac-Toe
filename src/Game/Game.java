@@ -19,6 +19,7 @@ public class Game {
         this.player2 = player2;
         this.finished = false;
         this.board = new Board(new ArrayList<>(ROWS * COLUMNS), player1, player2);
+
     }
 
     private void gameLoop(){

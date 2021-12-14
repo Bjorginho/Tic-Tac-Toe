@@ -1,30 +1,54 @@
 package GUI;
 
+import Game.Board;
 import Game.Field;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
-public class BoardGUI extends JPanel {
-    public final int NUM_ROWS = 3;
-    public final int NUM_COLUMNS = 3;
+public class BoardGUI extends JPanel implements MouseListener {
+    public final int ROWS = 3;
+    public final int COLUMNS = 3;
     public GridLayout grid;
 
-    public BoardGUI(){
-        grid = new GridLayout(NUM_ROWS, NUM_COLUMNS);
-        this.setBackground(Color.BLUE);
+    public BoardGUI(Board board){
+        grid = new GridLayout(ROWS, COLUMNS);
         this.setLayout(grid);
-
-        /*for(int i = 0; i < NUM_ROWS * NUM_COLUMNS; i++){
-            Field f = new Field(i);
-            Color c = i % 2 == 0 ? Color.RED : Color.ORANGE;
-            f.setBackground(c);
+        this.setBackground(Color.GRAY);
+        this.addMouseListener(this);
+        for(Field f : board.getBoard()){
             this.add(f);
-        }*/
+        }
+
     }
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if(e.getSource()==this){
+            System.out.println("Board");
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
 }

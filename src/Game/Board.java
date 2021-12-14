@@ -15,6 +15,13 @@ public class Board {
         this.board = board;
         this.player1 = player1;
         this.player2 = player2;
+
+        for(int row = 0; row < 3; row++){
+            for(int column = 0; column < 3; column++){
+                Field cell = new Field(row, column);
+                board.add(cell);
+            }
+        }
     }
 
     public ArrayList<Field> getBoard() {

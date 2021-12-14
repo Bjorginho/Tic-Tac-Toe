@@ -40,8 +40,7 @@ public class GameGUI extends JFrame{
                 gameBoard.getPlayer1(), gameBoard.getPlayer2());
 
         // ------------- BOARD --------------
-        boardGUI = new BoardGUI();
-        boardGUI.add(new JLabel("Board"));
+        boardGUI = new BoardGUI(gameBoard);
 
         // ------------- FOOTER -------------
         footerGUI = new FooterGUI(new Dimension(FRAME_WIDTH, 50));
@@ -50,7 +49,7 @@ public class GameGUI extends JFrame{
         this.add(boardGUI, BorderLayout.CENTER);
         this.add(footerGUI, BorderLayout.SOUTH);
 
-        this.setVisible(true);                                  // show frame
+        this.setVisible(true);
     }
 
     public void setBoard(Board board){
