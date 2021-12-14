@@ -1,16 +1,18 @@
 package Player;
 
-import Game.BoardGUI;
+import GUI.BoardGUI;
 
 public class Player implements IPlayer{
 
-    public Player(String name){
+    public final String name;
 
+    public Player(String name){
+        this.name = name;
     }
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override

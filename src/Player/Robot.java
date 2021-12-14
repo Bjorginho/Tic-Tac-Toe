@@ -1,6 +1,6 @@
 package Player;
 
-import Game.BoardGUI;
+import GUI.BoardGUI;
 
 public class Robot implements IPlayer{
 

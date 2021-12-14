@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GameGUI extends JFrame{
+    private final Board initialBoard;
     private Board gameBoard;
     private final int FRAME_HEIGHT;
     private final int FRAME_WIDTH;
@@ -13,61 +14,47 @@ public class GameGUI extends JFrame{
     private final ImageIcon cross = new ImageIcon(".\\img\\cross.png");
     private final ImageIcon circle = new ImageIcon(".\\img\\circle.png");
 
+    private HeaderGUI headerGUI;
+    private BoardGUI boardGUI;
+    private FooterGUI footerGUI;
+
     public GameGUI(Board board, int width, int height) {
-        this.gameBoard = board;
+        gameBoard = board;
+        initialBoard = gameBoard;
         this.FRAME_HEIGHT = height;
         this.FRAME_WIDTH = width;
-        printInfo();
         build();
     }
 
     private void build(){
-        this.setTitle("Welcome to Tic-Tac-Toe!");               // set title
-        this.setIconImage(logo.getImage());                     // set icon of frame
-        this.setSize(FRAME_WIDTH, FRAME_HEIGHT);                // set size of window / frame
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    // exit on close
-        this.setResizable(false);                               // not resizable
+        this.setTitle("Tic-Tac-Toe!");
+        this.setIconImage(logo.getImage());
+        this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
         this.setLayout(new BorderLayout(0,5));
 
-        // header
-        JPanel headerContainer = new JPanel();
-        headerContainer.setBackground(Color.GRAY);
-        headerContainer.setPreferredSize(new Dimension(FRAME_WIDTH, 50));
-        // header: Content
-        JLabel header = new JLabel("Tic-Tac-Toe!");
-        JLabel playerNames = new JLabel(gameBoard.getPlayer1().getName() + " vs " + gameBoard.getPlayer2().getName());
-        //headerContainer.setLayout(new BoxLayout(headerContainer, BoxLayout.PAGE_AXIS));
-        headerContainer.add(header);
-        headerContainer.add(playerNames);
-        //headerContainer.setAlignmentY(Component.CENTER_ALIGNMENT);
-        //headerContainer.setAlignmentX(Component.CENTER_ALIGNMENT);
+        // ------------- HEADER -------------
+        headerGUI = new HeaderGUI(
+                new Dimension(FRAME_WIDTH, 50),
+                gameBoard.getPlayer1(), gameBoard.getPlayer2());
 
-        // tic tac to board
-        JPanel board = new JPanel();
-        board.setBackground(Color.RED);
-        board.setPreferredSize(new Dimension(FRAME_WIDTH, 50));
+        // ------------- BOARD --------------
+        boardGUI = new BoardGUI();
+        boardGUI.add(new JLabel("Board"));
 
-        // Panel with buttons
-        JPanel footer = new JPanel();
-        footer.setBackground(Color.GRAY);
-        footer.setPreferredSize(new Dimension(FRAME_WIDTH, 50));
+        // ------------- FOOTER -------------
+        footerGUI = new FooterGUI(new Dimension(FRAME_WIDTH, 50));
 
-        this.add(headerContainer, BorderLayout.NORTH);
-        this.add(board, BorderLayout.CENTER);
-        this.add(footer, BorderLayout.SOUTH);
-    }
-
-    public void updateBoard(){
-
-    }
-
-    public void draw() {
+        this.add(headerGUI, BorderLayout.NORTH);
+        this.add(boardGUI, BorderLayout.CENTER);
+        this.add(footerGUI, BorderLayout.SOUTH);
 
         this.setVisible(true);                                  // show frame
     }
 
-    private void printInfo(){
-        System.out.println(gameBoard.getPlayer1().getName() + " vs " + gameBoard.getPlayer2().getName());
-        System.out.println("FrameSize:\nHeight: " + FRAME_HEIGHT + "\nWidth: " + FRAME_WIDTH);
+    public void setBoard(Board board){
+        gameBoard = board;
     }
+
 }

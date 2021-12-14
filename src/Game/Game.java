@@ -24,7 +24,6 @@ public class Game {
     private void gameLoop(){
         IPlayer turn = player1;
         window = new GameGUI(board,500, 500);
-        window.draw();
     }
 
     public void run(){

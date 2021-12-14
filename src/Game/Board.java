@@ -1,7 +1,6 @@
 package Game;
 
 
-import GUI.Field;
 import Player.IPlayer;
 
 import java.util.ArrayList;
