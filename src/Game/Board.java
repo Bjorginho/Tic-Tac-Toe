@@ -1,18 +1,33 @@
 package Game;
 
-import javax.swing.*;
-import java.awt.*;
 
-public class Board extends JPanel {
-    public final int NUM_ROWS = 3;
-    public final int NUM_COLUMNS = 3;
+import GUI.Field;
+import Player.IPlayer;
 
-    public Board(){
-        this.setBackground(Color.BLUE);
+import java.util.ArrayList;
 
-        for(int i = 0; i < NUM_ROWS * NUM_COLUMNS; i++){
-            //TODO: Add buttons
-        }
+public class Board {
+
+    private ArrayList<Field> board;
+    private IPlayer player1;
+    private IPlayer player2;
+
+    public Board(ArrayList<Field> board, IPlayer player1, IPlayer player2){
+        this.board = board;
+        this.player1 = player1;
+        this.player2 = player2;
+    }
+
+    public ArrayList<Field> getBoard() {
+        return board;
+    }
+
+    public IPlayer getPlayer1() {
+        return player1;
+    }
+
+    public IPlayer getPlayer2() {
+        return player2;
     }
 
 }

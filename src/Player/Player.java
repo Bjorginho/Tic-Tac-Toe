@@ -1,6 +1,6 @@
 package Player;
 
-import Game.Board;
+import Game.BoardGUI;
 
 public class Player implements IPlayer{
 
@@ -14,7 +14,7 @@ public class Player implements IPlayer{
     }
 
     @Override
-    public void makeMove(Board board) {
+    public void makeMove(BoardGUI boardGUI) {
 
     }
 

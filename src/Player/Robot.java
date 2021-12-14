@@ -1,6 +1,6 @@
 package Player;
 
-import Game.Board;
+import Game.BoardGUI;
 
 public class Robot implements IPlayer{
 
@@ -16,7 +16,7 @@ public class Robot implements IPlayer{
     }
 
     @Override
-    public void makeMove(Board board) {
+    public void makeMove(BoardGUI boardGUI) {
 
     }
 

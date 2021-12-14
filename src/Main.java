@@ -5,9 +5,9 @@ import Player.Robot;
 
 public class Main {
     public static void main(String[] args) {
-        IPlayer player1 = new Player("Player ");
+        IPlayer player1 = new Player("Player");
         IPlayer player2 = new Robot("AI");
         Game game = new Game(player1, player2);
-        game.start();
+        game.run();
     }
 }

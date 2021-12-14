@@ -1,11 +1,11 @@
 package Player;
 
-import Game.Board;
+import Game.BoardGUI;
 
 public interface IPlayer {
 
     public String getName();
 
-    public void makeMove(Board board);
+    public void makeMove(BoardGUI boardGUI);
 
 }

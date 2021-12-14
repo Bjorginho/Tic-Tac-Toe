@@ -3,25 +3,31 @@ package Game;
 import GUI.GameGUI;
 import Player.IPlayer;
 
-public class Game {
+import java.util.ArrayList;
 
+public class Game {
+    public final int ROWS = 3;
+    public final int COLUMNS = 3;
     private IPlayer player1;
     private IPlayer player2;
     private GameGUI window;
-    private boolean finished = false;
-    private IPlayer turn;
+    private boolean finished;
+    private Board board;
 
     public Game(IPlayer player1, IPlayer player2){
         this.player1 = player1;
         this.player2 = player2;
-
-        this.turn = player1;
-
+        this.finished = false;
+        this.board = new Board(new ArrayList<>(ROWS * COLUMNS), player1, player2);
     }
 
-    public void start(){
-        window = new GameGUI(700, 700);
+    private void gameLoop(){
+        IPlayer turn = player1;
+        window = new GameGUI(board,500, 500);
         window.draw();
     }
 
+    public void run(){
+        gameLoop();
+    }
 }
