@@ -1,53 +1,51 @@
 package Game;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Field extends JLabel implements MouseListener{
+public class Field extends JButton implements ActionListener {
 
-    public final int x;
-    public final int y;
+    public int ID, X, Y;
     private Brick currentBrick;
+    private ImageIcon icon;
+    final ImageIcon cross = new ImageIcon(".\\img\\cross.png");
+    final ImageIcon circle = new ImageIcon(".\\img\\circle.png");
 
-    public Field(int x, int y){
-        this.x = x;
-        this.y = y;
-        this.currentBrick = null;
-        this.addMouseListener(this);
+    public Field(int id, int x, int y, Brick brick){
+        ID = id;
+        X = x;
+        Y = y;
+        currentBrick = brick;
+        this.addActionListener(this);
     }
 
-    public void place(Brick brick){
-        this.currentBrick = brick;
+    public void setBrick(Brick brick){
+        currentBrick = brick;
     }
 
     public void reset(){
-        this.currentBrick = null;
+        currentBrick = null;
+        this.setIcon(null);
+    }
+
+    public Brick getBrick(){
+        return currentBrick;
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-        System.out.println("Cell (column=" + y + ", row=" + x + ") clicked!");
-    }
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("Cell (column=" + X + ", row=" + Y + ")");
 
-    @Override
-    public void mousePressed(MouseEvent e) {
+        if(currentBrick == Brick.CROSS){
+            icon = cross;
+        }
+        else if(currentBrick == Brick.CIRCLE){
+            icon = circle;
+        }
+        else
+            return;
 
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        //System.out.println(this.ID + " hover!");
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
+        this.setIcon(new ImageIcon(icon.getImage().getScaledInstance( this.getWidth(), this.getHeight(),  java.awt.Image.SCALE_SMOOTH )));
     }
 }

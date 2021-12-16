@@ -1,13 +1,15 @@
 package Player;
 
-import GUI.BoardGUI;
+import Game.Brick;
 
 public class Robot implements IPlayer{
 
     public String name;
+    public final Brick brick;
 
-    public Robot(String name){
+    public Robot(String name, Brick brick){
         this.name = name;
+        this.brick = brick;
     }
 
     @Override
@@ -16,8 +18,12 @@ public class Robot implements IPlayer{
     }
 
     @Override
-    public void makeMove(BoardGUI boardGUI) {
+    public void makeMove() {
 
     }
 
+    @Override
+    public Brick getBrick() {
+        return brick;
+    }
 }

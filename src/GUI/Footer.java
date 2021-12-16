@@ -5,12 +5,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FooterGUI extends JPanel implements ActionListener {
+public class Footer extends JPanel implements ActionListener {
 
     public JButton restartButton;
     public JButton menuButton;
 
-    public FooterGUI(Dimension dim){
+    public Footer(Dimension dim){
         this.setPreferredSize(dim);
         restartButton = new JButton("Restart");
         restartButton.addActionListener(this);
