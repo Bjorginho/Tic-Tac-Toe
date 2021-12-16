@@ -4,41 +4,32 @@ import Player.IPlayer;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-public class Header extends JPanel implements MouseListener {
+public class Header extends JPanel{
 
-    IPlayer player1;
-    IPlayer player2;
+    Game game;
     IPlayer turn;
-    Dimension dimension;
     JPanel container;
-    JLabel playersText;
-    JLabel turnText;
     JLabel playerTurnText;
 
-    public Header(Dimension dim, IPlayer p1, IPlayer p2){
-        dimension = dim;
-        player1 = p1;
-        player2 = p2;
-        turn = p1;
+    public Header(Game game, Dimension dim){
+        this.game = game;
+        turn = null;
+        this.setPreferredSize(dim);
         build();
     }
 
     private void build(){
-        this.setPreferredSize(dimension);
 
         container = new JPanel();
         container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
-        container.addMouseListener(this);
 
-        playersText = new JLabel(player1.getName() + "(" + player1.getBrick() + ") vs " + player2.getName() + "(" + player2.getBrick() + ")");
+        JLabel playersText = new JLabel(game.PLAYER1.getName() + "(" + game.PLAYER1.getBrick() + ") vs " + game.PLAYER2.getName() + "(" + game.PLAYER2.getBrick() + ")");
         playersText.setFont(new Font("Consolas", Font.BOLD, 22));
 
         JPanel footer = new JPanel();
-        turnText = new JLabel("Turn: ");
-        playerTurnText = new JLabel(turn.getName());
+        JLabel turnText = new JLabel("Turn: ");
+        playerTurnText = new JLabel();
         playerTurnText.setFont(new Font("Verdana", Font.BOLD, 12));
         footer.add(turnText);
         footer.add(playerTurnText);
@@ -50,35 +41,8 @@ public class Header extends JPanel implements MouseListener {
     }
 
     public void updateTurn(IPlayer player){
+        System.out.println(player.getName() + " your turn!");
         turn = player;
         playerTurnText.setText(turn.getName());
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        if(e.getSource()==container){
-            System.out.println("Clicker Header");
-            updateTurn(player2);
-        }
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
     }
 }
