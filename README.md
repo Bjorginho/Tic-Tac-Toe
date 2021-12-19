@@ -1,5 +1,4 @@
-# TicTacToe
+# Tic-Tac-Toe (GUI) 
 
-Juleferien 2021 kodeprosjekt!
+*Juleferien 2021 kodeprosjekt!*
 
-Startdato 13.12
