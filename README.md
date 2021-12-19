@@ -1,5 +1,5 @@
-# TicTacToe
+# Tic Tac Toe (Swing GUI)
 
-Juleferien 2021 kodeprosjekt!
+### **Kodeprosjekt Julen 2021**
 
-Startdato 13.12
+![In Game](img/in_game.png)
